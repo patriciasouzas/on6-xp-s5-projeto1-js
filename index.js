@@ -178,7 +178,7 @@ const pessoa = {
 
     const metros = (pessoa.caminhouQuantosMetros === 1) ? 'metro' : 'metros'
 
-    return `Olá, eu sou ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} ${anos}, ${pessoa.altura}, meu peso é ${pessoa.peso} e, só hoje, eu já caminhei ${pessoa.caminhouQuantosMetros} ${metros}!`
+    return `Olá, eu sou ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} ${anos}, ${pessoa.altura.toFixed(2)}, meu peso é ${pessoa.peso}Kg e, só hoje, eu já caminhei ${pessoa.caminhouQuantosMetros} ${metros}!`
   }
 }
 
@@ -189,6 +189,33 @@ console.log(pessoa.apresentacao())
 
 // Quero criar as variáveis pessoa2 e pessoa3 com as mesmas propriedades, mas alterando os valores de nome, sobrenome, altura e peso
 
+const pessoa2 = {
+  nome: 'Patrícia',
+  sobrenome: 'Santos',
+  idade: 31,
+  altura: 1.70,
+  peso: 70,
+  andando: false,
+  caminhouQuantosMetros: 0,
+  fazerAniversario() { this.idade++ },
+  andar(metrosCaminhados) {
+    this.andando = true
+    this.caminhouQuantosMetros += metrosCaminhados
+  },
+  parar() { this.andando = false },
+  apresentacao() {
+
+    const anos = (this.idade === 1) ? 'ano' : 'anos'
+
+    const metros = (this.caminhouQuantosMetros === 1) ? 'metro' : 'metros'
+
+    return `Olá, eu sou ${this.nome} ${this.sobrenome}, tenho ${this.idade} ${anos}, ${this.altura.toFixed(2)}, meu peso é ${this.peso}Kg e, só hoje, eu já caminhei ${this.caminhouQuantosMetros} ${metros}!`
+  }
+}
+
+pessoa2.andar(18)
+console.log(pessoa2.apresentacao())
+
 
 console.log('-----------------------------------------------------')
 // ----------------------------------------------
@@ -197,11 +224,33 @@ console.log('Classes 🆕')
 
 // Vamos criar a classe Pessoa
 
+class Pessoa {
+  constructor(name, surname, age, walking = false, distance = 0) {
+    this.nome = name
+    this.sobrenome = surname
+    this.idade = age
+    this.andando = walking
+    this.caminhouQuantosMetros = distance
+  }
+  fazerAniversario() {
+    this.idade++
+  }
 
+}
 
+const pessoa3 = new Pessoa('Camila', 'Marques', 27)
+console.log(pessoa3.nome)
 
+const { sobrenome } = pessoa3
+console.log(sobrenome)
 
+pessoa3.fazerAniversario()
 
+console.log(pessoa3)
+
+const pessoa4 = new Pessoa('Edilane', 'Pontes', 38, true, 35)
+
+console.log(pessoa4)
 
 console.log('-----------------------------------------------------')
 // ----------------------------------------------
@@ -211,40 +260,38 @@ console.log('Arrays [ 0️⃣  , 1️⃣  , 2️⃣  ]')
 // Declaração de arrays
 const lista = new Array('pera', 'uva', 'maçã')
 
-const numbers = [9, 2, 5]
+const numbers = [9, 2, 5, 7]
 
 // Acessando elementos pela posição do array
 
+console.log(lista[2])
 
-
-
-
-
+console.log(numbers[1]) // 2
 
 // Informe o tamanho de cada array
 
+console.log(lista.length)
 
-
-
-
-
+console.log(numbers.length)
 
 // Faça a desestruturação do array
 
+const [primeiro, segundo, terceiro] = lista
 
-
-
-
+console.log(primeiro)
+console.log(segundo)
+console.log(terceiro)
 
 
 // Possuo 4 tias. Os dados delas estão armazenados no array de objetos dentro do arquivo db.js
 // Vamos importar esses dados para podermos usá-los durante nosso exercício de revisão.
 const db = require('./db')
 
+console.log(db)
 
+const { tias } = db
 
-
-
+console.log(tias)
 
 console.log('-----------------------------------------------------')
 // ----------------------------------------------
@@ -253,22 +300,17 @@ console.log('Métodos iteração ')
 
 // Mostre a tabela das tias pelo console.table()
 
+console.table(tias)
 
-
-
-
-
+console.table(lista) // exemplo sem as propriedades
 
 console.log('-----------------------------------------------------')
 console.log('filter()')
 // filter
 // Filtre as tias que moram em SP e mostre no console.
 
-
-
-
-
-
+const tiasSP = tias.filter(item => item.local === 'SP')
+console.table(tiasSP)
 
 console.log('-----------------------------------------------------')
 console.log('map()')
