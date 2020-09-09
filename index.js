@@ -189,60 +189,6 @@ console.log(pessoa.apresentacao())
 
 // Quero criar as variáveis pessoa2 e pessoa3 com as mesmas propriedades, mas alterando os valores de nome, sobrenome, altura e peso
 
-const pessoa2 = {
-  nome: 'Patrícia',
-  sobrenome: 'Santos',
-  idade: 31,
-  altura: 1.70,
-  peso: 55,
-  andando: false,
-  caminhouQuantosMetros: 0,
-  fazerAniversario: () => this.idade++,
-  andar: (metrosCaminhados) => {
-    this.andando = true
-    this.caminhouQuantosMetros += metrosCaminhados
-  },
-  parar: () => this.andando = false,
-  apresentacao: () => {
-
-    const anos = (this.idade === 1) ? 'ano' : 'anos'
-
-    const metros = (this.caminhouQuantosMetros === 1) ? 'metro' : 'metros'
-
-    return `Olá, eu sou ${this.nome} ${this.sobrenome}, tenho ${this.idade} ${anos}, ${this.altura}, meu peso é ${this.peso} e, só hoje, eu já caminhei ${this.caminhouQuantosMetros} ${metros}!`
-  }
-}
-
-this.andar(10)
-console.log(this.apresentacao())
-
-
-const pessoa3 = {
-  nome: 'Cintia',
-  sobrenome: 'Fumi',
-  idade: 35,
-  altura: 1.62,
-  peso: 55,
-  andando: false,
-  caminhouQuantosMetros: 0,
-  fazerAniversario: () => this.idade++,
-  andar: (metrosCaminhados) => {
-    this.andando = true
-    this.caminhouQuantosMetros += metrosCaminhados
-  },
-  parar: () => this.andando = false,
-  apresentacao: () => {
-
-    const anos = (this.idade === 1) ? 'ano' : 'anos'
-
-    const metros = (this.caminhouQuantosMetros === 1) ? 'metro' : 'metros'
-
-    return `Olá, eu sou ${this.nome} ${this.sobrenome}, tenho ${this.idade} ${anos}, ${this.altura}, meu peso é ${this.peso} e, só hoje, eu já caminhei ${this.caminhouQuantosMetros} ${metros}!`
-  }
-}
-
-this.andar(200)
-console.log(this.apresentacao())
 
 console.log('-----------------------------------------------------')
 // ----------------------------------------------
